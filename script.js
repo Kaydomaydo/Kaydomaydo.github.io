@@ -40,7 +40,7 @@ const TRANSLATIONS = {
     subEmail:       `Email<small>aydoganemre51@gmail.com</small>`,
     subLinkedIn:    `LinkedIn<small>Professional profile</small>`,
     subGitHub:      `GitHub<small>My code lives here</small>`,
-    subWaxExtra:    `Wax v2<small>Side project</small>`,
+    subWaxExtra:    `Plak<small>Music journal · live</small>`,
     // Bottom hints
     hintScroll: "Scroll left/right between categories",
     hintClick:  "Click a sub-item to open",
@@ -78,7 +78,7 @@ const TRANSLATIONS = {
     subEmail:       `E-posta<small>aydoganemre51@gmail.com</small>`,
     subLinkedIn:    `LinkedIn<small>Profesyonel profil</small>`,
     subGitHub:      `GitHub<small>Kodlarım burada</small>`,
-    subWaxExtra:    `Wax v2<small>Yan proje</small>`,
+    subWaxExtra:    `Plak<small>Müzik günlüğü · yayında</small>`,
     hintScroll: "Kategoriler arasında sola/sağa kaydır",
     hintClick:  "Açmak için bir alt öğeye tıkla",
     hintEsc:    "Kapatmak için Esc",
@@ -252,13 +252,13 @@ const CONTENT_TR = {
   },
   blog: {
     latest: {
-      title: "Wax v2",
+      title: "Plak",
       sub: "Ekstra · Yan Proje",
       html: `
-        <h2>Wax v2</h2>
-        <div class="panel-sub">Yan proje · geliştiriliyor</div>
-        <p>Geliştirme aşamasındaki kişisel yan projem.</p>
-        <p><a href="https://lambent-mermaid-e03f43.netlify.app/" target="_blank" rel="noopener noreferrer">Wax v2'yi Ziyaret Et</a></p>
+        <h2>Plak — Müzik Günlüğü</h2>
+        <div class="panel-sub">Yan proje · yayında</div>
+        <p>Albümleri kaydedip puanladığın, yorumladığın ve arkadaşlarının ne dinlediğini takip ettiğin bir müzik günlüğü uygulaması — müzik için Letterboxd gibi. React ve Supabase ile geliştirildi.</p>
+        <p><a href="https://kaydomaydo.github.io/plak/" target="_blank" rel="noopener noreferrer">Plak'ı Ziyaret Et</a></p>
       `,
     },
   },
@@ -442,13 +442,13 @@ const CONTENT = {
   },
   blog: {
     latest: {
-      title: "Wax v2",
+      title: "Plak",
       sub: "Extra · Side Project",
       html: `
-        <h2>Wax v2</h2>
-        <div class="panel-sub">Side project · in development</div>
-        <p>A personal side project currently in development.</p>
-        <p><a href="https://lambent-mermaid-e03f43.netlify.app/" target="_blank" rel="noopener noreferrer">Visit Wax v2</a></p>
+        <h2>Plak — Music Journal</h2>
+        <div class="panel-sub">Side project · live</div>
+        <p>A music journaling app — log albums, rate them, and follow what friends are listening to (think Letterboxd for music). Built with React and Supabase.</p>
+        <p><a href="https://kaydomaydo.github.io/plak/" target="_blank" rel="noopener noreferrer">Visit Plak</a></p>
       `,
     },
   },

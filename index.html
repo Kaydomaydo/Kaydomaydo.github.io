@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Emre's Station — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="boot" class="boot">
+    <div class="boot-shapes" aria-hidden="true">
+      <span class="shape-triangle"></span>
+      <span class="shape-circle"></span>
+      <span class="shape-cross"></span>
+      <span class="shape-square"></span>
+    </div>
+    <div class="boot-logo">Emre's Station</div>
+    <div class="boot-tag">PS3 · Personal Edition</div>
+    <div class="boot-bar"><span></span></div>
+  </div>
+
+  <!-- User select (PS4 Switch User style) -->
+  <section id="userSelect" class="user-select hidden">
+    <header class="us-header">
+      <h1 class="us-title" data-i18n="switchUser">Switch User</h1>
+    </header>
+    <div class="us-body">
+      <h2 class="us-question" data-i18n="whoUses">Who will use the PS4?</h2>
+      <ul class="us-info">
+        <li data-i18n="uiInfo1">You will be able to use all the previous user's devices.</li>
+        <li data-i18n="uiInfo2">The previous user will not be logged out of the PS4.</li>
+      </ul>
+      <div class="us-grid">
+        <button class="us-card us-new" data-user="new">
+          <div class="us-card-art us-card-art-new">
+            <span class="us-plus">+</span>
+          </div>
+          <div class="us-card-name" data-i18n="newUser">New User</div>
+        </button>
+        <button class="us-card" data-user="emre">
+          <div class="us-card-art">
+            <div class="us-face">
+              <span class="us-eye us-eye-l"></span>
+              <span class="us-eye us-eye-r"></span>
+              <span class="us-smile"></span>
+            </div>
+          </div>
+          <div class="us-card-name">Emre</div>
+          <div class="us-card-meta" data-i18n="loggedIn">Logged In</div>
+        </button>
+      </div>
+    </div>
+    <footer class="us-footer">
+      <span class="us-hint-btn"><i class="us-crs"></i> <span data-i18n="enter">Enter</span></span>
+      <span class="us-hint-btn"><i class="us-cir"></i> <span data-i18n="cancel">Cancel</span></span>
+    </footer>
+  </section>
+
+  <!-- Guest welcome (shown only if "+ New User" is picked) -->
+  <section id="guestPrompt" class="guest-prompt hidden">
+    <div class="guest-card">
+      <h2 data-i18n="guestWelcome">Welcome, Guest 👋</h2>
+      <p data-i18n="guestDesc">This is Emre's portfolio — feel free to look around. You'll be signed in as a visitor.</p>
+      <button class="guest-continue" id="guestContinue" data-i18n="guestBtn">Continue as Guest</button>
+    </div>
+  </section>
+
+  <main id="xmb" class="xmb hidden">
+    <!-- Animated PS3 wave background (flowing SVG) -->
+    <svg class="xmb-wave" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="waveGrad1" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#7ec5ff" stop-opacity="0.0"/>
+          <stop offset="20%"  stop-color="#7ec5ff" stop-opacity="0.55"/>
+          <stop offset="50%"  stop-color="#cfe8ff" stop-opacity="0.85"/>
+          <stop offset="80%"  stop-color="#7ec5ff" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#7ec5ff" stop-opacity="0.0"/>
+        </linearGradient>
+        <linearGradient id="waveGrad2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#dcefff" stop-opacity="0.0"/>
+          <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#dcefff" stop-opacity="0.0"/>
+        </linearGradient>
+        <linearGradient id="waveGrad3" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.0"/>
+          <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0"/>
+        </linearGradient>
+      </defs>
+      <path id="wavePath1" d="" fill="url(#waveGrad1)"/>
+      <path id="wavePath2" d="" fill="url(#waveGrad2)"/>
+      <path id="wavePath3" d="" fill="url(#waveGrad3)"/>
+    </svg>
+
+    <!-- Top status bar -->
+    <header class="xmb-top">
+      <span class="xmb-user">Emre's Station</span>
+      <span class="xmb-clock">
+        <button id="langToggle" class="lang-toggle">TR</button>
+        <span id="clock">--:--</span>
+        <span class="xmb-date" id="date">--</span>
+      </span>
+    </header>
+
+    <!-- Cross Media Bar -->
+    <section class="xmb-bar" id="xmbBar">
+      <!-- Each category: icon + label + sub-items -->
+      <div class="xmb-cat" data-key="about">
+        <div class="xmb-icon" aria-hidden="true">
+          <!-- House (PS3 XMB home) -->
+          <svg viewBox="0 0 64 64"><path d="M32 8 L8 28 L14 28 L14 54 L26 54 L26 38 L38 38 L38 54 L50 54 L50 28 L56 28 Z" fill="currentColor"/><circle cx="32" cy="20" r="2.4" fill="rgba(0,0,0,0.55)"/><path d="M30 22 Q32 24, 34 22" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="xmb-cat-label" data-i18n="catAbout">About</div>
+        <ul class="xmb-sub">
+          <li data-item="bio">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="3" fill="currentColor"/><path d="M5 20 C6 15, 10 14, 12 14 S18 15, 19 20 Z" fill="currentColor"/></svg></span>
+            <span class="sub-t" data-i18n="subBio">Bio<small>About me, in short</small></span>
+          </li>
+          <li data-item="facts">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="7" x2="12" y2="13" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg></span>
+            <span class="sub-t" data-i18n="subFacts">Quick Facts<small>A few things to know</small></span>
+          </li>
+          <li data-item="interests">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><path d="M12 21 C5 16, 2 12, 2 8 C2 5, 4 3, 7 3 C9 3, 11 4, 12 6 C13 4, 15 3, 17 3 C20 3, 22 5, 22 8 C22 12, 19 16, 12 21 Z" fill="currentColor"/></svg></span>
+            <span class="sub-t" data-i18n="subInterests">Interests<small>What I'm into</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="xmb-cat" data-key="projects">
+        <div class="xmb-icon" aria-hidden="true">
+          <!-- Briefcase (PS3 XMB) -->
+          <svg viewBox="0 0 64 64"><rect x="10" y="22" width="44" height="30" rx="2" fill="currentColor"/><path d="M24 22 V16 C24 14, 25 13, 27 13 H37 C39 13, 40 14, 40 16 V22" fill="none" stroke="currentColor" stroke-width="3"/><line x1="10" y1="34" x2="54" y2="34" stroke="rgba(0,0,0,0.45)" stroke-width="1.5"/><rect x="29" y="32" width="6" height="4" rx="0.5" fill="rgba(0,0,0,0.5)"/></svg>
+        </div>
+        <div class="xmb-cat-label" data-i18n="catProjects">Projects</div>
+        <ul class="xmb-sub">
+          <li data-item="wax">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2" fill="currentColor"/><path d="M3 10 L21 10" stroke="#1a1f10" stroke-width="1.5"/></svg></span>
+            <span class="sub-t" data-i18n="subWax">Hepsi Emlak Pro<small>Öne çıkan · geliştiriliyor</small></span>
+          </li>
+          <li data-item="portfolio">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/><line x1="3" y1="20" x2="21" y2="20" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="sub-t" data-i18n="subPortfolio">Olist Fraud Detection<small>Veri analizi projesi</small></span>
+          </li>
+          <li data-item="more">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><path d="M12 3 C7 3, 3 7, 3 12 S7 21, 12 21 S21 17, 21 12 S17 3, 12 3 Z M12 7 V17 M7 12 H17" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="sub-t" data-i18n="subMore">More on GitHub<small>External link</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="xmb-cat" data-key="skills">
+        <div class="xmb-icon" aria-hidden="true">
+          <!-- Music / two-note (PS3 XMB) -->
+          <svg viewBox="0 0 64 64"><path d="M24 12 L24 44 C24 48, 20 52, 15 52 C11 52, 8 49, 8 45 C8 41, 11 38, 15 38 C17 38, 19 39, 20 40 L20 16 L52 10 L52 40 C52 44, 48 48, 43 48 C39 48, 36 45, 36 41 C36 37, 39 34, 43 34 C45 34, 47 35, 48 36 L48 18 Z" fill="currentColor"/></svg>
+        </div>
+        <div class="xmb-cat-label" data-i18n="catSkills">Skills</div>
+        <ul class="xmb-sub">
+          <li data-item="languages">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><path d="M3 5 L21 5 L21 19 L3 19 Z" fill="none" stroke="currentColor" stroke-width="2"/><text x="12" y="16" text-anchor="middle" fill="currentColor" font-size="9" font-family="monospace">{ }</text></svg></span>
+            <span class="sub-t" data-i18n="subLanguages">Languages<small>What I write code in</small></span>
+          </li>
+          <li data-item="frameworks">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><path d="M12 2 L13.5 8 L20 8 L14.5 12 L16.5 18 L12 14.5 L7.5 18 L9.5 12 L4 8 L10.5 8 Z" fill="currentColor"/></svg></span>
+            <span class="sub-t" data-i18n="subOtherTools">Other Tools<small>The rest of the toolkit</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="xmb-cat xmb-cat-active" data-key="resume">
+        <div class="xmb-icon" aria-hidden="true">
+          <!-- Film strip (PS3 XMB Video) -->
+          <svg viewBox="0 0 64 64"><rect x="8" y="14" width="48" height="36" rx="1" fill="currentColor"/><rect x="11" y="17" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="11" y="25" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="11" y="33" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="11" y="41" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="48" y="17" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="48" y="25" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="48" y="33" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="48" y="41" width="5" height="5" fill="rgba(0,0,0,0.6)"/><rect x="20" y="20" width="24" height="24" fill="rgba(0,0,0,0.5)"/></svg>
+        </div>
+        <div class="xmb-cat-label" data-i18n="catResume">Resume</div>
+        <ul class="xmb-sub">
+          <li data-item="experience">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="1.5" fill="currentColor"/><path d="M9 7 V5 C9 4, 10 3, 11 3 H13 C14 3, 15 4, 15 5 V7" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="sub-t" data-i18n="subExperience">Experience<small>Work history</small></span>
+          </li>
+          <li data-item="education">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><path d="M2 9 L12 4 L22 9 L12 14 Z" fill="currentColor"/><path d="M6 11 V16 C6 18, 9 19, 12 19 S18 18, 18 16 V11" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="sub-t" data-i18n="subEducation">Education<small>Where I studied</small></span>
+          </li>
+          <li data-item="download">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><path d="M12 3 V15 M7 10 L12 15 L17 10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="4" y1="20" x2="20" y2="20" stroke="currentColor" stroke-width="2"/></svg></span>
+            <span class="sub-t" data-i18n="subDownload">Download CV<small>PDF · grab a copy</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="xmb-cat" data-key="contact">
+        <div class="xmb-icon" aria-hidden="true">
+          <!-- Controller (PS3 XMB Game) -->
+          <svg viewBox="0 0 64 64"><path d="M14 22 C9 22, 4 27, 4 34 C4 41, 7 48, 12 48 C15 48, 17 46, 19 43 L45 43 C47 46, 49 48, 52 48 C57 48, 60 41, 60 34 C60 27, 55 22, 50 22 Z" fill="currentColor"/><rect x="13" y="30" width="9" height="2.4" fill="rgba(0,0,0,0.55)"/><rect x="16.3" y="26.7" width="2.4" height="9" fill="rgba(0,0,0,0.55)"/><circle cx="44" cy="28" r="2" fill="rgba(0,0,0,0.55)"/><circle cx="50" cy="32" r="2" fill="rgba(0,0,0,0.55)"/><circle cx="44" cy="36" r="2" fill="rgba(0,0,0,0.55)"/><circle cx="38" cy="32" r="2" fill="rgba(0,0,0,0.55)"/></svg>
+        </div>
+        <div class="xmb-cat-label" data-i18n="catContact">Contact</div>
+        <ul class="xmb-sub">
+          <li data-item="email">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5" fill="currentColor"/><path d="M3 7 L12 14 L21 7" fill="none" stroke="#1a1f10" stroke-width="1.5"/></svg></span>
+            <span class="sub-t" data-i18n="subEmail">Email<small>aydoganemre51@gmail.com</small></span>
+          </li>
+          <li data-item="linkedin">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor"/><text x="12" y="16" text-anchor="middle" fill="#1a1f10" font-size="10" font-weight="bold" font-family="sans-serif">in</text></svg></span>
+            <span class="sub-t" data-i18n="subLinkedIn">LinkedIn<small>Professional profile</small></span>
+          </li>
+          <li data-item="github">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="currentColor"/><path d="M9 19 V16 M15 19 V16 M9 16 C9 13, 7 13, 7 11 C7 9, 9 8, 12 8 S17 9, 17 11 C17 13, 15 13, 15 16" fill="none" stroke="#1a1f10" stroke-width="1.5"/></svg></span>
+            <span class="sub-t" data-i18n="subGitHub">GitHub<small>My code lives here</small></span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="xmb-cat" data-key="blog">
+        <div class="xmb-icon" aria-hidden="true">
+          <!-- Globe (PS3 XMB Network) -->
+          <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="24" fill="currentColor"/><ellipse cx="32" cy="32" rx="24" ry="9" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="1.8"/><ellipse cx="32" cy="32" rx="9" ry="24" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="1.8"/><line x1="8" y1="32" x2="56" y2="32" stroke="rgba(0,0,0,0.55)" stroke-width="1.8"/><path d="M12 22 Q32 28, 52 22 M12 42 Q32 36, 52 42" fill="none" stroke="rgba(0,0,0,0.55)" stroke-width="1.6"/></svg>
+        </div>
+        <div class="xmb-cat-label" data-i18n="catExtra">Extra</div>
+        <ul class="xmb-sub">
+          <li data-item="latest">
+            <span class="sub-i"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2" fill="currentColor"/><path d="M3 10 L21 10" stroke="#1a1f10" stroke-width="1.5"/></svg></span>
+            <span class="sub-t" data-i18n="subWaxExtra">Wax v2<small>Side project</small></span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Inline content panel that slides in -->
+    <section id="xmbPanel" class="xmb-panel">
+      <button class="xmb-panel-close" id="panelClose" aria-label="Close">×</button>
+      <div class="xmb-panel-inner" id="panelContent"></div>
+    </section>
+
+    <!-- Bottom hint bar -->
+    <footer class="xmb-hints">
+      <span><i class="ps-tri"></i> <span data-i18n="hintScroll">Scroll left/right between categories</span></span>
+      <span><i class="ps-cir"></i> <span data-i18n="hintClick">Click a sub-item to open</span></span>
+      <span><i class="ps-crs"></i> <span data-i18n="hintEsc">Esc to close</span></span>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
